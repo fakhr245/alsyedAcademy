@@ -72,7 +72,7 @@
             @foreach (var item in Model)
             {
             <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate">
-                <a href="#" class="probootstrap-featured-news-box">
+                <a href="/News/Details/@item.id" class="probootstrap-featured-news-box">
                     <figure class="probootstrap-media"><img src="../images/newsthumbs/@item.photo" alt="@item.description" class="img-responsive"></figure>
                     <div class="probootstrap-text">
                         <h3>@item.title</h3>
