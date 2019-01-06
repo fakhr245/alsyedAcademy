@@ -37,6 +37,7 @@ namespace alsyedAcademy.Controllers
             */
             List<News> news = db.News.ToList();
             ViewBag.news = news;
+            ViewBag.Title = "come to learn go to earn";
             return View(allCourses);
         }
 
