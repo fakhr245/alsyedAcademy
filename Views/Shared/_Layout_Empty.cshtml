@@ -1,0 +1,28 @@
+﻿ @RenderBody()
+@RenderSection("Scripts", false)
+
+<div ng-app="myApp" ng-controller="newsController" ng-init="loadNews()">
+    <div>
+        <p ng-repeat="nw in news">{{nw.description}}</p>
+    </div> 
+</div>
+
+<script src="~/Scripts/angular.min.js"></script>
+<script>
+    //var app = angular.module('myApp').filter('tel', function () { });
+
+    var myApp = angular.module('myApp', []);
+    myApp.controller('newsController', function ($http, $scope) {
+            $scope.url = "api/NewsService/";
+            $scope.news = [];
+
+            $scope.loadNews = function () {
+                $http.get($scope.url).then(function (success) {
+                    $scope.news = success.data;
+                }, function (error) {
+                    alert("Some error occured while loading news");
+                })
+            }
+        });
+
+</script>

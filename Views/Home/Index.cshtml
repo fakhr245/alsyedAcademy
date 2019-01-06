@@ -1,0 +1,189 @@
+﻿
+@model IEnumerable<alsyedAcademy.Models.Course>
+
+
+
+      <section class="flexslider">
+        <ul class="slides">
+          <li style="background-image: url(../../Theme/img/slider_1.jpg)" class="overlay">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="probootstrap-slider-text text-center">
+                    <h1 class="probootstrap-heading probootstrap-animate">Your Bright Future is Our Mission</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li style="background-image: url(../../Theme/img/slider_2.jpg)" class="overlay">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="probootstrap-slider-text text-center">
+                    <h1 class="probootstrap-heading probootstrap-animate">Education is Life</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </li>
+          <li style="background-image: url(../../Theme/img/slider_3.jpg)" class="overlay">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="probootstrap-slider-text text-center">
+                    <h1 class="probootstrap-heading probootstrap-animate">Helping Each of Our Students Fulfill the Potential</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+     
+
+      <section class="probootstrap-section probootstrap-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+                    <h2>Our News</h2>                    
+                </div>
+            </div>
+          <div class="row">
+            <div class="col-md-12">
+              
+              <div class="tab-content">
+
+                <div id="featured-news" class="tab-pane fade in active">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="owl-carousel" id="owl1">
+                        @foreach (var news in ViewBag.news)
+                        {
+                        <div class="item">
+                          <a href="/news/details/@news.id" class="probootstrap-featured-news-box">
+                            <figure class="probootstrap-media"><img src="../../images/newsthumbs/@news.photo" alt="@news.description" class="img-responsive"></figure>
+                            <div class="probootstrap-text">
+                              <h3>@news.title</h3>
+                              <p>@news.description</p>
+                              <span class="probootstrap-date"><i class="icon-calendar"></i>@news.dated</span>
+                              
+                            </div>
+                          </a>
+                        </div>
+                        }
+                        <!-- END item -->                      
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END row -->
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <p><a href="/news" class="btn btn-primary">View all news</a></p>  
+                    </div>
+                  </div>
+                </div>               
+
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="probootstrap-section probootstrap-bg-white probootstrap-border-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+              <h2>Our Featured Courses</h2>
+              <p class="lead">We provide high quality of education with great students statisfaction.</p>
+            </div>
+          </div>
+          <!-- END row -->
+          <div class="row">
+              @foreach (alsyedAcademy.Models.Course mm in Model)
+              {
+            <div class="col-md-6">
+              <div class="probootstrap-service-2 probootstrap-animate">
+                <div class="image">
+                  <div class="image-bg">
+                    <img src="../../images/courses/@mm.photo" alt="@mm.name">
+                  </div>
+                </div>
+                <div class="text">
+                  @*<span class="probootstrap-meta"><i class="icon-calendar2"></i> @DateTime.Now</span>*@
+                  <h3>@mm.name</h3>
+                  @*@foreach (alsyedAcademy.Models.Outline outline in mm.outlines)
+                  {}*@
+                    <p>@mm.description</p>
+                  
+                  <p><a href="#" class="btn btn-primary">Enroll now</a> @*<span class="enrolled-count">2,928 students enrolled</span>*@</p>
+                </div>
+              </div>
+            </div>
+              }            
+          </div>
+        </div>
+      </section>
+
+    <section ng-app="myApp" ng-controller="freeStudentsController" ng-init="loadStudents()" class="probootstrap-section probootstrap-bg probootstrap-section-colored probootstrap-testimonial" style="background-image: url(img/slider_4.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+                <h2>Meet Our Students</h2>
+                <p class="lead"> Ma Sha Allah, watch our student with bright future below</p>
+            </div>
+        </div>
+        <!-- END row -->
+        <div class="row">
+            <div class="col-md-12 probootstrap-animate">
+                <div class="owl-carousel owl-carousel-testimony owl-carousel-fullwidth">
+                    <div class="item" ng-repeat="student in students">
+
+                        <div class="probootstrap-testimony-wrap text-center">
+                            <figure>
+                                <img src="../../images/freestudents/{{student.photo}}" alt="Free Bootstrap Template by ProBootstrap.com">
+                            </figure>
+                            <blockquote class="quote">&ldquo;{{student.Designation}} - {{student.workingAt}}<cite class="author"> &mdash; <span>{{student.name}}</span></cite></blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END row -->
+    </div>
+</section>  
+      
+<script>
+    //var app = angular.module('myApp').filter('tel', function () { });
+
+    var myApp = angular.module('myApp', []);
+    myApp.controller('freeStudentsController', function ($http, $scope) {
+        $scope.url = "api/FreeStudentsservice/";
+            $scope.students = [];
+
+            $scope.loadStudents = function () {
+                $http.get($scope.url).then(function (success) {
+                    $scope.students = success.data;
+                }, function (error) {
+                    alert("Some error occured while loading news");
+                })
+            }
+        });
+
+</script>
+    
+      
+      <section class="probootstrap-cta">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="probootstrap-animate" data-animate-effect="fadeInRight">Get your admission now!</h2>
+              <a href="#" role="button" class="btn btn-primary btn-lg btn-ghost probootstrap-animate" data-animate-effect="fadeInLeft">Enroll</a>
+            </div>
+          </div>
+        </div>
+      </section>
+   
+  
