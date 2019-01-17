@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-left section-heading probootstrap-animate mb0">
-                <h1 class="mb0">@Model.Title</h1>
+                <h1 class="mb0">Topic : @Model.Title</h1>
             </div>
         </div>
     </div>
@@ -23,50 +23,41 @@
                 <iframe width="560" height="315" src="@Model.link" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-                @Html.ActionLink("Back to List", "Index")
-            </p>
 
-        </div>
-    </div>
-</section>
-<section class="probootstrap-section">
-    <div class="container">
 
-        <div class="row">
 
-            <div ng-app="myApp" ng-controller="commentsController" ng-init="allComments(@Model.id)">
-                <div ng-repeat="comment in comments">
-                    <p><strong>Comment : </strong> {{comment.text}}</p>
-                </div>
-            </div>
-        
-
-    @using (Html.BeginForm("CommentsCreate", "Tutorials", FormMethod.Post))
+                @using (Html.BeginForm("CommentsCreate", "Tutorials", FormMethod.Post))
             {
-        @Html.AntiForgeryToken()
+                    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <input type="hidden" name="tId" id="tId" value="@Model.id" />
-            <div class="form-group">
-                <label for="text">Comment: </label>
-                <div class="col-md-10">
-                    <input type="text" name="text" id="text" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Post" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <input type="hidden" name="tId" id="tId" value="@Model.id" />
+                        <div class="form-group">
 
-            </div>
-        </div>
-    </section>
+                            <div class="col-md-10">
+                                <label for="text">Your Comment </label>
+                                <input type="text" name="text" id="text" />
+                                <input type="submit" value="Post" class="btn btn-info" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div ng-app="myApp" ng-controller="commentsController" ng-init="allComments(@Model.id)">
+                    <div ng-repeat="comment in comments">
+                        <p><strong>Comment : </strong> {{comment.text}}</p>
+                    </div>
+                </div>
+
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+   
+
+
+
 
 
 
