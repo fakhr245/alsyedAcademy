@@ -6,3 +6,4 @@ C:\Users\Amir khan\Documents\Visual Studio 2015\Projects\alsyedAcademy\alsyedAca
 C:\Users\Amir khan\Documents\Visual Studio 2015\Projects\alsyedAcademy\alsyedAcademy\bin\alsyedAcademy.pdb
 C:\Users\Amir khan\Documents\Visual Studio 2015\Projects\alsyedAcademy\alsyedAcademy\obj\Release\alsyedAcademy.dll
 C:\Users\Amir khan\Documents\Visual Studio 2015\Projects\alsyedAcademy\alsyedAcademy\obj\Release\alsyedAcademy.pdb
+C:\Users\Amir khan\Documents\Visual Studio 2015\Projects\alsyedAcademy\alsyedAcademy\obj\Release\AlsyedAcademy.csprojResolveAssemblyReference.cache

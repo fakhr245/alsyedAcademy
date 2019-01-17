@@ -39,5 +39,9 @@ namespace alsyedAcademy.Models
         public DbSet<Tag> Tags { get; set; }
 
         public System.Data.Entity.DbSet<alsyedAcademy.Models.FreeStudents> FreeStudents { get; set; }
+
+        public System.Data.Entity.DbSet<alsyedAcademy.Models.Tutorial> Tutorials { get; set; }
+
+        public System.Data.Entity.DbSet<alsyedAcademy.Models.Comment> Comments { get; set; }
     }
 }
