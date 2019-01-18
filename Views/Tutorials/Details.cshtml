@@ -18,9 +18,11 @@
     <div class="container">
 
         <div class="row">
-            <h6><strong> Description : </strong> @Model.description</h6>
-            <div>
-                <iframe width="560" height="315" src="@Model.link" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div style="left:50%;">
+                <h6><strong> Description : </strong> @Model.description</h6>
+                <div>
+                    <iframe width="560" height="315" src="@Model.link" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
             <p>
 
@@ -37,7 +39,7 @@
                         <div class="form-group">
                             <div class="col-md-10">
                                 <label for="text">Your Comment: </label>
-                                <input type="text" name="text" id="text" />                                
+                                <textarea name="text" id="text" cols="40" rows="5"></textarea>                                 
                                 <input type="submit" value="Post" class="btn btn-info" />
                             </div>
                         </div>
@@ -47,13 +49,14 @@
                     }
                 <div ng-app="myApp" ng-controller="commentsController" ng-init="allComments(@Model.id)">
                     <div ng-repeat="comment in comments">
-            <p><strong>Comment : </strong> {{comment.text}} <a href="/tutorials/DeleteComment/{{comment.id}}">delete</a> </p>
+
+            <p> <a href="/tutorials/DeleteComment/{{comment.id}}">     <img src="~/images/others/delete.jpg" width="30" height="30" /> </a>
+                <strong>Comment : </strong> {{comment.text}}
+            </p>
                     </div>
                 </div>
-
-
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+         
+    @Html.ActionLink("Back To Tutotrials Home", "Index")
    
 
 
@@ -90,3 +93,14 @@
 
 
 
+    <style>
+        .TB {
+
+height: 25px !important;
+
+width: 220px !important;
+
+font-size: 14px !important;
+
+}
+    </style>
