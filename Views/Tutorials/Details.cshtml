@@ -24,9 +24,9 @@
             </div>
             <p>
 
+                @{TempData["tId"] = Model.id;
 
-
-                @using (Html.BeginForm("CommentsCreate", "Tutorials", FormMethod.Post))
+                using (Html.BeginForm("CommentsCreate", "Tutorials", FormMethod.Post))
             {
                     @Html.AntiForgeryToken()
 
@@ -44,9 +44,10 @@
                     </div>
                 }
 
+                    }
                 <div ng-app="myApp" ng-controller="commentsController" ng-init="allComments(@Model.id)">
                     <div ng-repeat="comment in comments">
-            <p><strong>Comment : </strong> {{comment.text}} <input type="button" value="delete" class="btn-danger" ng-click="deleteComment(comment.id)" /> </p>
+            <p><strong>Comment : </strong> {{comment.text}} <a href="/tutorials/DeleteComment/{{comment.id}}">delete</a> </p>
                     </div>
                 </div>
 

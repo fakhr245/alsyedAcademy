@@ -57,6 +57,20 @@ namespace alsyedAcademy.Controllers
             return View();
         }
 
+        public async Task<ActionResult> DeleteComment(int id)
+        {
+            Comment comment = await db.Comments.FindAsync(id);
+            int x = Convert.ToInt32(TempData["tId"]);
+            if (comment == null)
+            {              
+                return RedirectToAction("/details/"+x);
+            }
+
+            db.Comments.Remove(comment);
+            await db.SaveChangesAsync();
+            return RedirectToAction("/details/" + x);
+        }
+
         // POST: Tutorials/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
