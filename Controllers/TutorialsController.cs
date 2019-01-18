@@ -45,7 +45,7 @@ namespace alsyedAcademy.Controllers
             {
                 db.Comments.Add(comment);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("/details/" + comment.tId);
             }
 
             return RedirectToAction("Index");
