@@ -13,14 +13,14 @@
             </div>
         </div>
     </div>
-</section>
-<p>
-@if (User.IsInRole("admin") == true)
+</section>@if (User.IsInRole("admin") == true)
 {
+<p>
+
 
     Html.ActionLink("Create New", "Create");
-}
-</p>
+
+</p>}
 <table class="table">
     <tr>
        
