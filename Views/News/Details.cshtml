@@ -22,13 +22,15 @@
                     <div>
                         <h8>@Model.dated - @Model.description</h8>
                         <p>
-                            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+@if (User.IsInRole("admin") == true)
+{
+      Html.ActionLink("Edit", "Edit", new { id = Model.id });
+}
                             @Html.ActionLink("Back to List", "Index")
                         </p>
                         <img src="../../images/newsoriginal/@Model.photo" alt="@Model.description" class="img-responsive">
                     </div><p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+  
 </p>
                 </div>
                

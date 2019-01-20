@@ -16,7 +16,10 @@
 </section>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+@if (User.IsInRole("admin") == true)
+{
+    Html.ActionLink("Create New", "Create");
+}
 </p>
 <table class="table">
     <tr>
@@ -42,9 +45,12 @@
             @Html.DisplayFor(modelItem => item.description)
         </td>      
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+@if (User.IsInRole("admin") == true)
+{
+    Html.ActionLink("Edit", "Edit", new { id = item.id });
+    Html.ActionLink("Delete", "Delete", new { id = item.id });
+}
+         |@Html.ActionLink("Details", "Details", new { id = item.id })
         </td>
     </tr>
 }
